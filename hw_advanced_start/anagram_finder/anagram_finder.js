@@ -4,7 +4,9 @@ const AnagramFinder = function (word) {
 
 // filter otherWords and only leave those meeting conditions of following functions
 AnagramFinder.prototype.findAnagrams = function (otherWords) {
-    const result = otherWords.filter(word => this.checkOtherWord(word));
+    const result = otherWords.filter((word) => {
+        return this.checkOtherWord(word) && word.length === this.word.length;
+    });
     return result;
 }
 
@@ -16,12 +18,29 @@ AnagramFinder.prototype.checkOtherWord = function (otherWord) {
     return splitOtherWord.every(hasEveryLetter);
 }
 
+
 //takes in a letter from one of the otherWords, and checks if it is in this.word
 AnagramFinder.prototype.checkOtherWordLetters = function (otherWordLetter) {
     let splitOriginalWord = this.word.split('');
     const found = splitOriginalWord.find(letter => letter === otherWordLetter);
     return found
 }
+
+//checks if word is valid as an anagram
+// AnagramFinder.prototype.isWordValid = function (word) {
+//     if (word.length === this.word.length || word !== this.word || word !== "") {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+
+
+
+
+
+
 
 //split this.word into letters
 
