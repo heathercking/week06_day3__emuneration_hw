@@ -5,7 +5,7 @@ const AnagramFinder = function (word) {
 // filter otherWords and only leave those meeting conditions of following functions
 AnagramFinder.prototype.findAnagrams = function (otherWords) {
     const result = otherWords.filter((word) => {
-        return this.checkOtherWord(word) && word.length === this.word.length;
+        return this.checkOtherWord(word) && word.length === this.word.length && word !== this.word && word !== "";
     });
     return result;
 }
