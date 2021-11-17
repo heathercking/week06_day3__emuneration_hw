@@ -1,6 +1,6 @@
 const PangramFinder = function (phrase) {
   this.alphabet = 'qwertyuiopasdfghjklzxcvbnm'.split('');
-  this.phrase = phrase.split('');
+  this.phrase = phrase;
 }
 
 
@@ -10,8 +10,11 @@ PangramFinder.prototype.isPangram = function () {
 }
 
 PangramFinder.prototype.isInPhrase = function (input) {
-  const found = this.phrase.find(letter => letter === input);
+  let lowerPhrase = this.phrase.toLowerCase();
+  let splitPhrase = lowerPhrase.split('');
+  const found = splitPhrase.find(letter => letter === input);
   return found;
 }
+
 
 module.exports = PangramFinder;
